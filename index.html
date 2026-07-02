@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>点検システム ポータル｜シオンテクノス</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #181c27;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: #7b8099;
+      --accent: #3d6de8;
+      --accent-glow: rgba(61,109,232,0.18);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 28px 32px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .header-text h1 {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .header-text p {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* ── Main ── */
+    main {
+      flex: 1;
+      padding: 40px 32px 60px;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    /* ── Cards ── */
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 22px 20px;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent-glow);
+      opacity: 0;
+      transition: opacity 0.18s;
+      border-radius: 14px;
+    }
+
+    .card:hover {
+      border-color: rgba(61,109,232,0.4);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .card-icon {
+      font-size: 26px;
+      margin-bottom: 12px;
+      position: relative;
+      line-height: 1;
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 6px;
+      position: relative;
+    }
+
+    .card-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .card-arrow {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--muted);
+      transition: border-color 0.18s, color 0.18s;
+    }
+
+    .card:hover .card-arrow {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 20px 32px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 520px) {
+      header { padding: 20px 20px 18px; }
+      main { padding: 28px 16px 48px; }
+      .cards { grid-template-columns: 1fr; }
+      footer { padding: 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-mark">ST</div>
+  <div class="header-text">
+    <h1>点検システム ポータル</h1>
+    <p>シオンテクノス株式会社</p>
+  </div>
+</header>
+
+<main>
+  <p class="section-label">アプリケーション一覧</p>
+
+  <div class="cards">
+
+    <a class="card" href="https://uchiyamazion.github.io/ac-inspection/" target="_blank" rel="noopener">
+      <div class="card-arrow">↗</div>
+      <div class="card-icon">❄️</div>
+      <div class="card-tag">空調設備</div>
+      <div class="card-title">空調点検・<br>作業報告</div>
+      <div class="card-desc">点検報告の作成・管理、署名記録</div>
+    </a>
+
+    <a class="card" href="https://uchiyamazion.github.io/fron-kanri/" target="_blank" rel="noopener">
+      <div class="card-arrow">↗</div>
+      <div class="card-icon">🌡️</div>
+      <div class="card-tag">フロン管理</div>
+      <div class="card-title">フロン排出<br>抑制管理</div>
+      <div class="card-desc">充填・回収記録、法定点検、漏洩量報告</div>
+    </a>
+
+    <a class="card" href="https://uchiyamazion.github.io/inspecthion/" target="_blank" rel="noopener">
+      <div class="card-arrow">↗</div>
+      <div class="card-icon">🔧</div>
+      <div class="card-tag">細密点検</div>
+      <div class="card-title">グラニフリガー<br>細密点検記録</div>
+      <div class="card-desc">SANEI グラニフリガー点検・記録管理</div>
+    </a>
+
+    <a class="card" href="https://uchiyamazion.github.io/usx-app/" target="_blank" rel="noopener">
+      <div class="card-arrow">↗</div>
+      <div class="card-icon">📋</div>
+      <div class="card-tag">メーカー点検</div>
+      <div class="card-title">日本キヤリア<br>点検表</div>
+      <div class="card-desc">日本キヤリア製品の点検記録</div>
+    </a>
+
+  </div>
+</main>
+
+<footer>SION TECHNOS CO., LTD. — INSPECTION PORTAL</footer>
+
+</body>
+</html>
